@@ -3,10 +3,25 @@ const fs = require('fs');
 const { EOL } = require('os');
 
 function read() {
-  /**
-   * Прочесть файл puzzles.txt в кодировке 'utf-8' и вернуть эти данные из функции
-   */
+
+  const readTxt = fs.readFileSync("./puzzles.txt", "utf-8");
+
+  const tempArr = readTxt.split("\n");
+  
+  const newArr = tempArr
+    .map((elem) => elem.split(""))
+    .map((puzzle) => {
+      const result = [];
+      for (let i = 0; i < 81; i += 9) {
+        const nestedArr = puzzle.slice(i, i + 9);
+        result.push(nestedArr);
+      }
+      return result;
+    });
+
+  console.log(newArr[process.argv[2]]);
 }
+
 
 
 function solve() {
