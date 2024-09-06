@@ -1,16 +1,29 @@
-const fs = require('fs');
-const { EOL } = require('os');
+const fs = require("fs");
+const { EOL } = require("os");
 
 function read() {
-  const readTxt = fs.readFileSync('./puzzles.txt', 'utf-8');
-// console.log(readTxt)
-  const tempArr = readTxt.split('\n').map((elem)=>elem.split(','))
-  // const sudokuArr = tempArr.split(',')
 
-  console.log(tempArr)
+  const readTxt = fs.readFileSync("./puzzles.txt", "utf-8");
+
+  const tempArr = readTxt.split("\n");
+  
+  const newArr = tempArr
+    .map((elem) => elem.split(""))
+    .map((puzzle) => {
+      const result = [];
+      for (let i = 0; i < 81; i += 9) {
+        const nestedArr = puzzle.slice(i, i + 9);
+        result.push(nestedArr);
+      }
+      return result;
+    });
+
+  console.log(newArr[process.argv[2]]);
 }
 
-read()
+read();
+
+
 
 function solve() {
   /**
