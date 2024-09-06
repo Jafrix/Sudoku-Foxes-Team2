@@ -17,10 +17,17 @@ function solve() {
 }
 
 function isSolved() {
-  /**
-   * Принимает игровое поле в том формате, в котором его вернули из функции solve.
-   * Возвращает булевое значение — решено это игровое поле или нет.
-   */
+  // const arrOfSolve = solve();
+let counter = 0;
+arr.forEach((element) =>{
+ if (element.includes('-')){
+  counter =1} })
+ 
+ if(counter === 1){
+  return false;
+ }
+ else {
+  return true}
 }
 
 function prettyBoard() {
