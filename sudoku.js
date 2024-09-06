@@ -1,5 +1,6 @@
-const fs = require("fs");
-const { EOL } = require("os");
+const cfonts = require('cfonts');
+const fs = require('fs');
+const { EOL } = require('os');
 
 function read() {
 
@@ -21,8 +22,6 @@ function read() {
   console.log(newArr[process.argv[2]]);
 }
 
-read();
-
 
 
 function solve() {
@@ -33,16 +32,30 @@ function solve() {
 }
 
 function isSolved() {
-  /**
-   * Принимает игровое поле в том формате, в котором его вернули из функции solve.
-   * Возвращает булевое значение — решено это игровое поле или нет.
-   */
+  // const arrOfSolve = solve();
+let counter = 0;
+arr.forEach((element) =>{
+ if (element.includes('-')){
+  counter =1} })
+ 
+ if(counter === 1){
+  return false;
+ }
+ else {
+  return true}
 }
 
 function prettyBoard() {
-  /**
-   * Принимает игровое поле в том формате, в котором его вернули из функции solve.
-   * Выводит в консоль/терминал судоку.
-   * Подумай, как симпатичнее его вывести.
-   */
+  
+    // const arrOfSolve = solve();
+   
+    const newSudoku = arr.map((cell) => {
+     const newArr = cell.map((el) => ((el !== '-') ? el : ' '));
+     const firstArr = newArr.slice(0, 3);
+     const secondArr = newArr.slice(3, 6);
+     const thirdArr = newArr.slice(6);
+    const finalArr = [...firstArr, '|', ...secondArr, '|', ...thirdArr]
+    return finalArr.join(' ');
+   }).join(EOL);
+   console.log(newSudoku);
 }
